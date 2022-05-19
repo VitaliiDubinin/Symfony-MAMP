@@ -1,9 +1,10 @@
-version: '3'
+version: "3"
 services:
-  db:
+  db4:
+    platform: linux/x86_64
     image: mysql:8
     ports:
-      - '3308:3306'
+      - "4308:3306"
     environment:
       MYSQL_DATABASE: ${DATABASE_NAME}
       MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
@@ -19,11 +20,11 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
-      - '9082:80'
+      - "9482:80"
     links:
-      - db
+      - db4
     environment:
-      PMA_HOST: db
+      PMA_HOST: db4
       PMA_PORT: 3306
     restart: always
     networks:
@@ -32,7 +33,7 @@ services:
   www:
     build: php
     ports:
-      - '8007:80'
+      - "8407:80"
     volumes:
       - ./php/vhosts:/etc/apache2/sites-enabled
       - ./:/var/www

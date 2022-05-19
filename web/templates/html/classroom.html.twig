@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="classroom">
+    <p>
+      Teacher say . . .
+      {{
+        random(
+          [
+            'no questions, ok lets continue',
+            'people in the remote are you there?',
+            'if you get an error is good!',
+            '...and thats the whole idea!',
+            'ok, give it a try!',
+            'who, is reading next?'
+          ]
+        )
+      }}
+    </p>
+    <p>
+      Student ask . . .
+    </p>
+  </div>
+{% endblock %}
